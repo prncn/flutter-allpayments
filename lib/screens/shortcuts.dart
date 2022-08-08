@@ -1,5 +1,6 @@
 import 'package:allpayments/assets/constants.dart';
 import 'package:allpayments/components/bottom_section.dart';
+import 'package:allpayments/env.dart';
 import 'package:allpayments/models/market_model.dart';
 import 'package:allpayments/screens/base.dart';
 import 'package:allpayments/services/maps_gl.dart';
@@ -101,7 +102,7 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
                             TileLayerOptions(
                               urlTemplate:
                                   'https://api.mapbox.com/styles/v1/prncn/cl6kk3d0d002r14mrm85zkbsr/tiles/256/{z}/{x}/{y}@2x?access_token={access_token}',
-                              additionalOptions: {'access_token': apiKey},
+                              additionalOptions: {'access_token': mapBoxToken},
                             ),
                             MarkerLayerOptions(markers: [
                               Marker(

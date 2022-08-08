@@ -19,11 +19,25 @@ class _BaseState extends State<Base> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          buildNavigationRail(),
-          buildScreen(),
-        ],
+      body: Center(
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 12,
+              blurRadius: 20,
+              offset: const Offset(10, 15),
+            )
+          ]),
+          width: 390,
+          height: 844,
+          child: Row(
+            children: [
+              buildNavigationRail(),
+              buildScreen(),
+            ],
+          ),
+        ),
       ),
     );
   }
