@@ -22,7 +22,7 @@ const RESOURCES = {
 "assets/images/market_logos/rewe.webp": "fb6e13ce753bb7de9241e0d9fedf121d",
 "assets/images/priya-mistry-supermarket-illustration.jpg": "cafac6056f181a2e8cf68b4e3bd32bb6",
 "assets/images/visa-white-shadow.png": "a7f9866e17c4b280ca2c07750fd266ea",
-"assets/NOTICES": "ba32e8b81efe94f996ec71f0fcf04f5c",
+"assets/NOTICES": "17ccbf5bf39a32cbf9b57e8b0f601b87",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/flutter_feather_icons/fonts/feather.ttf": "c96dc22ca29a082af83cce866d35cebc",
 "canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
@@ -35,9 +35,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "8c03a13debc3bbfb3bd400fc643e459f",
-"/": "8c03a13debc3bbfb3bd400fc643e459f",
-"main.dart.js": "40b684f04aee13e723a86c73d667a4a0",
+"index.html": "4bb2051f48a2e04bd055668aa95c0f74",
+"/": "4bb2051f48a2e04bd055668aa95c0f74",
+"main.dart.js": "b02be9d47d8d7fb64d44382b42e8e489",
 "manifest.json": "99dfb54cdc6549adb5894745bd4fd7ec",
 "version.json": "4e455da5d32b61b659301f77b3a52450"
 };
