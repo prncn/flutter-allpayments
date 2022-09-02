@@ -1,17 +1,27 @@
 import 'package:allpayments/assets/constants.dart';
 import 'package:allpayments/components/bottom_section.dart';
+import 'package:allpayments/components/title_header.dart';
+import 'package:allpayments/provider/route_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:allpayments/screens/base.dart';
 
-class FinanceCardsScreen extends StatefulWidget {
+class FinanceCardsScreen extends Base {
   const FinanceCardsScreen({Key? key}) : super(key: key);
+
+  @override
+  final Screen name = Screen.cards;
 
   @override
   State<FinanceCardsScreen> createState() => _FinanceCardsScreenState();
 }
 
 class _FinanceCardsScreenState extends State<FinanceCardsScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +85,7 @@ class _FinanceCardsScreenState extends State<FinanceCardsScreen> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 20),
                   ListView.separated(
                     shrinkWrap: true,
                     itemBuilder: ((context, index) {
@@ -90,11 +101,19 @@ class _FinanceCardsScreenState extends State<FinanceCardsScreen> {
                         children: [
                           Text(
                             history[index]['store'],
-                            style: TextStyle(color: darkGray.withOpacity(0.6)),
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onBackground
+                                    .withOpacity(0.6)),
                           ),
                           Text(
                             '${(history[index]['amount'] as double).toStringAsFixed(2)} €',
-                            style: TextStyle(color: darkGray.withOpacity(0.6)),
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onBackground
+                                    .withOpacity(0.6)),
                           ),
                         ],
                       );

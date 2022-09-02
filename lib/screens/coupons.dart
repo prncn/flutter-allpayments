@@ -1,11 +1,16 @@
 import 'package:allpayments/assets/constants.dart';
 import 'package:allpayments/components/bottom_section.dart';
+import 'package:allpayments/components/title_header.dart';
+import 'package:allpayments/provider/route_provider.dart';
 import 'package:allpayments/screens/base.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CouponsScreen extends StatefulWidget {
+class CouponsScreen extends Base {
   const CouponsScreen({Key? key}) : super(key: key);
+
+  @override
+  final Screen name = Screen.coupons;
 
   @override
   State<CouponsScreen> createState() => _CouponsScreenState();
@@ -87,17 +92,21 @@ class _CouponsScreenState extends State<CouponsScreen> {
   }
 
   Widget tabBarSection() {
-    return const TabBar(tabs: <Tab>[
-      Tab(
-        text: 'All',
-      ),
-      Tab(
-        text: 'Active',
-      ),
-      Tab(
-        text: 'Inactive',
-      ),
-    ]);
+    return TabBar(
+        labelStyle: TextStyle(
+          color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
+        ),
+        tabs: const <Tab>[
+          Tab(
+            text: 'All',
+          ),
+          Tab(
+            text: 'Active',
+          ),
+          Tab(
+            text: 'Inactive',
+          ),
+        ]);
   }
 
   Widget shopsNearTile() {
@@ -121,7 +130,10 @@ class _CouponsScreenState extends State<CouponsScreen> {
                 style: TextStyle(
                   height: 1.8,
                   fontSize: 12,
-                  color: darkGray.withOpacity(0.6),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onBackground
+                      .withOpacity(0.6),
                 ),
               ),
             ],
@@ -130,7 +142,8 @@ class _CouponsScreenState extends State<CouponsScreen> {
             '~100m',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: darkGray.withOpacity(0.6),
+              color:
+                  Theme.of(context).colorScheme.onBackground.withOpacity(0.4),
             ),
           ),
         ],

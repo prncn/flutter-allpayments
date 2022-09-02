@@ -4,8 +4,16 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
-
   bool get isDarkMode => themeMode == ThemeMode.dark;
+  GlobalKey<ScaffoldState> scaffoldState = GlobalKey<ScaffoldState>();
+  bool _isDrawerOpen = false;
+  late AnimationController drawerIconController;
+
+  bool get isDrawerOpen => _isDrawerOpen;
+  set isDrawerOpen(var value) {
+    _isDrawerOpen = value;
+    notifyListeners();
+  }
 
   void toggleTheme() {
     if (themeMode == ThemeMode.dark) {

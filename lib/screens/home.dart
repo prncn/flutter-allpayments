@@ -1,18 +1,28 @@
 import 'package:allpayments/assets/constants.dart';
+import 'package:allpayments/components/title_header.dart';
+import 'package:allpayments/provider/route_provider.dart';
 import 'package:allpayments/provider/theme_provider.dart';
 import 'package:allpayments/screens/base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends Base {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  final Screen name = Screen.home;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

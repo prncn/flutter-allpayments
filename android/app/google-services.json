@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "550448573139",
+    "project_id": "banded-shade",
+    "storage_bucket": "banded-shade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550448573139:android:b5932d827c32508cc70226",
+        "android_client_info": {
+          "package_name": "com.example.study_basic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550448573139-b7ohq1lvierk8bfbe24o0s5et4hh0no0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeN9qk3cbJSSSK3r0fTIBMfLsDZJDmE0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550448573139-b7ohq1lvierk8bfbe24o0s5et4hh0no0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

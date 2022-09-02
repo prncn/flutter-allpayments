@@ -1,17 +1,22 @@
 import 'package:allpayments/assets/constants.dart';
 import 'package:allpayments/components/bottom_section.dart';
+import 'package:allpayments/components/title_header.dart';
 import 'package:allpayments/env.dart';
 import 'package:allpayments/models/market_model.dart';
+import 'package:allpayments/provider/route_provider.dart';
 import 'package:allpayments/screens/base.dart';
-import 'package:allpayments/services/maps_gl.dart';
 import 'package:allpayments/utils/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart' as latlong;
+import 'package:provider/provider.dart';
 
-class ShortcutsScreen extends StatefulWidget {
+class ShortcutsScreen extends Base {
   const ShortcutsScreen({Key? key}) : super(key: key);
+
+  @override
+  final Screen name = Screen.shortcuts;
 
   @override
   State<ShortcutsScreen> createState() => _ShortcutsScreenState();
@@ -21,29 +26,24 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
   Color ambient = pennyMarket.color;
 
   @override
+  void initState() {
+    super.initState();
+    // Provider.of<RouteProvider>(context).current = Screen.shortcuts;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DecoratedBox(
-        decoration: BoxDecoration(
-            // color: backgroundColor,
-            // gradient: LinearGradient(
-            //   begin: Alignment.bottomLeft,
-            //   end: Alignment.topRight,
-            //   stops: const [0.8, 1],
-            //   colors: [backgroundColor, lighten(ambient, 0.4)],
-            // ),
-            ),
-        child: CustomScrollView(
-          slivers: [
-            const TitleHeader(
-              icon: FeatherIcons.box,
-              title: 'Shortcuts',
-            ),
-            SliverToBoxAdapter(
-              child: buildBody(),
-            )
-          ],
-        ),
+      body: CustomScrollView(
+        slivers: [
+          const TitleHeader(
+            icon: FeatherIcons.box,
+            title: 'Shortcuts',
+          ),
+          SliverToBoxAdapter(
+            child: buildBody(),
+          )
+        ],
       ),
     );
   }
@@ -150,7 +150,10 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
                 style: TextStyle(
                   height: 1.8,
                   fontSize: 12,
-                  color: darkGray.withOpacity(0.6),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onBackground
+                      .withOpacity(0.6),
                 ),
               ),
             ],
@@ -159,7 +162,8 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
             '~100m',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: darkGray.withOpacity(0.6),
+              color:
+                  Theme.of(context).colorScheme.onBackground.withOpacity(0.4),
             ),
           ),
         ],
