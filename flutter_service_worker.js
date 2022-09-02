@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "52f5b8fc886b4eace798ea2c5ebcb298",
+  "assets/AssetManifest.json": "729a2d9f2c3ec4cb56548f04da88c451",
 "assets/FontManifest.json": "ad1a2b33dc8645a9ec31ed1b1f6b573a",
 "assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
 "assets/images/3d-flame-blue-archive-card-box.png": "4fae215e36941922c2043a56ffb5de59",
@@ -22,7 +22,7 @@ const RESOURCES = {
 "assets/images/market_logos/rewe.webp": "fb6e13ce753bb7de9241e0d9fedf121d",
 "assets/images/priya-mistry-supermarket-illustration.jpg": "cafac6056f181a2e8cf68b4e3bd32bb6",
 "assets/images/visa-white-shadow.png": "44350dff0de57c2f07a6ed852b6837c1",
-"assets/NOTICES": "ea9de3848995a6f8a37b4f3e4a1a67ad",
+"assets/NOTICES": "255dc1a9001b7d121ca7aa286869d347",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/flutter_feather_icons/fonts/feather.ttf": "c96dc22ca29a082af83cce866d35cebc",
 "canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
@@ -35,9 +35,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "71a652227ff094dde4a1e472893f521f",
-"/": "71a652227ff094dde4a1e472893f521f",
-"main.dart.js": "dbcc84202e8daea9f26fb2d37edbec77",
+"index.html": "7e410f8c793a4de86c9ba5cb52fd422f",
+"/": "7e410f8c793a4de86c9ba5cb52fd422f",
+"main.dart.js": "b03bc968f90b9b75f5f4928380483609",
 "manifest.json": "99dfb54cdc6549adb5894745bd4fd7ec",
 "version.json": "4e455da5d32b61b659301f77b3a52450"
 };
