@@ -3,7 +3,6 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -42,8 +41,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static FirebaseOptions web = FirebaseOptions(
-    apiKey: dotenv.env['WEB_API_KEY']!,
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: String.fromEnvironment('WEB_API_KEY'),
     appId: '1:550448573139:web:63e550201da8db75c70226',
     messagingSenderId: '550448573139',
     projectId: 'banded-shade',
@@ -51,16 +50,16 @@ class DefaultFirebaseOptions {
     storageBucket: 'banded-shade.appspot.com',
   );
 
-  static FirebaseOptions android = FirebaseOptions(
-    apiKey: dotenv.env['ANDROID_API_KEY']!,
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: String.fromEnvironment('ANDROID_API_KEY'),
     appId: '1:550448573139:android:b5932d827c32508cc70226',
     messagingSenderId: '550448573139',
     projectId: 'banded-shade',
     storageBucket: 'banded-shade.appspot.com',
   );
 
-  static FirebaseOptions ios = FirebaseOptions(
-    apiKey: dotenv.env['IOS_API_KEY']!,
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: String.fromEnvironment('IOS_API_KEY'),
     appId: '1:550448573139:ios:260ea96d4888acbec70226',
     messagingSenderId: '550448573139',
     projectId: 'banded-shade',

@@ -3,6 +3,7 @@ import 'package:allpayments/components/bottom_section.dart';
 import 'package:allpayments/components/title_header.dart';
 import 'package:allpayments/provider/route_provider.dart';
 import 'package:allpayments/screens/base.dart';
+import 'package:allpayments/services/rewe_scraper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -52,38 +53,26 @@ class _CouponsScreenState extends State<CouponsScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               TabBar(
-                indicatorColor: cgiPurple,
-                labelColor: cgiPurple,
-                unselectedLabelColor: darkGray,
+                indicatorColor: Theme.of(context).primaryColor,
+                labelColor: Theme.of(context).primaryColor,
+                unselectedLabelColor:
+                    Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
                 tabs: const [
-                  Tab(text: 'All'),
-                  Tab(text: 'Active'),
-                  Tab(text: 'Inactive'),
+                  Tab(text: 'Rewe'),
+                  Tab(text: 'Lidl'),
+                  Tab(text: 'Edeka'),
                 ],
               ),
               SizedBox(
-                height: 400,
+                height: MediaQuery.of(context).size.height * 2,
                 child: TabBarView(
                   children: <Widget>[
-                    heroCardRow(),
-                    heroCardRow(),
-                    heroCardRow(),
+                    heroCardRow('Rewe'),
+                    heroCardRow('Lidl'),
+                    heroCardRow('Edeka'),
                   ],
                 ),
               )
-            ],
-          ),
-        ),
-        BottomSection(
-          icon: Icons.storefront_outlined,
-          title: 'Recent Discoveries',
-          child: Column(
-            children: [
-              shopsNearTile(),
-              shopsNearTile(),
-              const SizedBox(
-                height: 50,
-              ),
             ],
           ),
         ),
@@ -91,55 +80,42 @@ class _CouponsScreenState extends State<CouponsScreen> {
     );
   }
 
-  Widget tabBarSection() {
-    return TabBar(
-        labelStyle: TextStyle(
-          color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
-        ),
-        tabs: const <Tab>[
-          Tab(
-            text: 'All',
-          ),
-          Tab(
-            text: 'Active',
-          ),
-          Tab(
-            text: 'Inactive',
-          ),
-        ]);
-  }
-
-  Widget shopsNearTile() {
+  Widget reweCouponTile(Map<String, String> coupon) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 14),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Friesen - Wolff',
-                style: TextStyle(
+          SizedBox(
+            width: 200,
+            child: Builder(builder: (context) {
+              List<String> text = coupon['title']!.split('je');
+              String product = text[0];
+              String quant = '';
+
+              if (text.length > 1) {
+                quant = text[1];
+              }
+
+              return Text.rich(
+                TextSpan(text: product, children: [
+                  TextSpan(
+                    text: quant,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )
+                ]),
+                softWrap: true,
+                style: const TextStyle(
                   fontWeight: FontWeight.w900,
                 ),
-              ),
-              Text(
-                '6488 Greenfelder Islands, MS, KN',
-                style: TextStyle(
-                  height: 1.8,
-                  fontSize: 12,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onBackground
-                      .withOpacity(0.6),
-                ),
-              ),
-            ],
+              );
+            }),
           ),
           Text(
-            '~100m',
+            coupon['price']!,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color:
@@ -151,26 +127,72 @@ class _CouponsScreenState extends State<CouponsScreen> {
     );
   }
 
-  SingleChildScrollView heroCardRow() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: const [
-          ActionCard(
-            active: true,
-            heading: '20%',
-            type: 'Discount',
-            description: 'Ultimate Discount for all customers.\nCross country.',
+  Widget heroCardRow(String market) {
+    return Column(
+      children: [
+        SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              ActionCard(
+                active: true,
+                heading: '20%',
+                type: 'Discount',
+                description:
+                    'Discount on all $market Brand products.\nAvailable until Tuesday.',
+              ),
+              ActionCard(
+                active: false,
+                heading: '10 €',
+                type: 'Voucher',
+                description: 'For using $market App.',
+              ),
+            ],
           ),
-          ActionCard(
-            active: false,
-            heading: '50zl',
-            type: 'Voucher',
-            description: 'For creating an account within an app.',
-          ),
-        ],
-      ),
+        ),
+        Builder(
+            // future: scrapeCoupons(),
+            builder: (context) {
+          List coupons = [
+            {'title': 'Saint Albray L’Original je 180 g', 'price': '1,85€'},
+            {'title': 'Chavroux Frischkäse je 150 g', 'price': '1,85€'},
+            {'title': 'My Coffee Cup Bio Kaffee je 55 g', 'price': '1,99€'},
+            {'title': 'Nergi Kiwibeeren je 125g', 'price': '1,79€'},
+            {
+              'title':
+                  'versch. Sorten Zewa Wisch & Weg Original je 4 x 45 Blatt',
+              'price': '1,19€'
+            },
+            {'title': 'Tulip Bacon in Scheiben je 125 g', 'price': '1,69€'},
+            {
+              'title': 'Krone Mein Lieblings Bio Lachs je 80 g',
+              'price': '2,99€'
+            },
+            {'title': 'Leibniz Choco Vollmilch je 125 g', 'price': '0,89€'},
+            {'title': 'Adidas Geschenkkarte 15-150€ oder 25€', 'price': ''}
+          ];
+
+          // if (!snapshot.hasData) {
+          //   return const Center(child: CircularProgressIndicator());
+          // }
+
+          // List coupons = snapshot.data as List;
+
+          return BottomSection(
+            icon: Icons.storefront_outlined,
+            title: '$market App Coupons',
+            child: Column(
+              children: [
+                ...coupons.map((coupon) => reweCouponTile(coupon)).toList(),
+                const SizedBox(
+                  height: 50,
+                ),
+              ],
+            ),
+          );
+        }),
+      ],
     );
   }
 }

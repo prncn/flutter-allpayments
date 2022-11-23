@@ -1,7 +1,6 @@
 import 'package:allpayments/assets/constants.dart';
 import 'package:allpayments/components/bottom_section.dart';
 import 'package:allpayments/components/title_header.dart';
-import 'package:allpayments/env.dart';
 import 'package:allpayments/models/market_model.dart';
 import 'package:allpayments/provider/route_provider.dart';
 import 'package:allpayments/screens/base.dart';
@@ -9,8 +8,8 @@ import 'package:allpayments/utils/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_map/flutter_map.dart';
+// ignore: depend_on_referenced_packages
 import 'package:latlong2/latlong.dart' as latlong;
-import 'package:provider/provider.dart';
 
 class ShortcutsScreen extends Base {
   const ShortcutsScreen({Key? key}) : super(key: key);
@@ -28,13 +27,13 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
   @override
   void initState() {
     super.initState();
-    // Provider.of<RouteProvider>(context).current = Screen.shortcuts;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        primary: false,
         slivers: [
           const TitleHeader(
             icon: FeatherIcons.box,
@@ -65,9 +64,15 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
                 icon: Icons.storefront_outlined,
                 title: 'Shops near you',
                 child: Column(
-                  children: [
-                    shopsNearTile(),
-                    shopsNearTile(),
+                  children: const [
+                    DetailsListTile(
+                        title: 'Rewe',
+                        subtitle: '6488 Greenfelder Islands, HE',
+                        trailing: '~100m'),
+                    DetailsListTile(
+                        title: 'Teegut',
+                        subtitle: '60433 Königstein, HE',
+                        trailing: '~800m'),
                   ],
                 ),
               ),
@@ -101,8 +106,11 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
                           layers: [
                             TileLayerOptions(
                               urlTemplate:
-                                  'https://api.mapbox.com/styles/v1/prncn/cl6kk3d0d002r14mrm85zkbsr/tiles/256/{z}/{x}/{y}@2x?access_token={access_token}',
-                              additionalOptions: {'access_token': mapBoxToken},
+                                  'https://api.mapbox.com/styles/v1/prncn/cl6kk3d0d002r14mrm85zkbsr/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicHJuY24iLCJhIjoiY2w2a2l5eHNqMDJieDNpbzcwZ3I1cncxeSJ9.nmjBwSEFUm4IyL_MfGhcgQ',
+                              additionalOptions: {
+                                'access_token':
+                                    'pk.eyJ1IjoicHJuY24iLCJhIjoiY2w2a2l5eHNqMDJieDNpbzcwZ3I1cncxeSJ9.nmjBwSEFUm4IyL_MfGhcgQ'
+                              },
                             ),
                             MarkerLayerOptions(markers: [
                               Marker(
@@ -126,48 +134,6 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget shopsNearTile() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 14),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Friesen - Wolff',
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              Text(
-                '6488 Greenfelder Islands, MS, KN',
-                style: TextStyle(
-                  height: 1.8,
-                  fontSize: 12,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onBackground
-                      .withOpacity(0.6),
-                ),
-              ),
-            ],
-          ),
-          Text(
-            '~100m',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color:
-                  Theme.of(context).colorScheme.onBackground.withOpacity(0.4),
-            ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -206,6 +172,62 @@ class _ShortcutsScreenState extends State<ShortcutsScreen> {
         clipBehavior: Clip.hardEdge,
         margin: const EdgeInsets.all(6),
         child: market.logo,
+      ),
+    );
+  }
+}
+
+class DetailsListTile extends StatelessWidget {
+  const DetailsListTile({
+    Key? key,
+    required this.title,
+    required this.subtitle,
+    required this.trailing,
+  }) : super(key: key);
+
+  final String title;
+  final String subtitle;
+  final String trailing;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 14),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              Text(
+                subtitle,
+                style: TextStyle(
+                  height: 1.8,
+                  fontSize: 12,
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onBackground
+                      .withOpacity(0.6),
+                ),
+              ),
+            ],
+          ),
+          Text(
+            trailing,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color:
+                  Theme.of(context).colorScheme.onBackground.withOpacity(0.4),
+            ),
+          ),
+        ],
       ),
     );
   }

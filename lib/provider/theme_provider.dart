@@ -26,6 +26,7 @@ class ThemeProvider extends ChangeNotifier {
 }
 
 final ThemeData darkTheme = ThemeData(
+  primaryColor: cgiPurpleSat,
   scaffoldBackgroundColor: darkSlate,
   backgroundColor: darkSlate,
   cardColor: offBlack,
@@ -36,6 +37,7 @@ final ThemeData darkTheme = ThemeData(
 );
 
 final ThemeData lightTheme = ThemeData(
+  primaryColor: cgiPurple,
   scaffoldBackgroundColor: backgroundColor,
   backgroundColor: backgroundColor,
   cardColor: Colors.white,

@@ -8,15 +8,20 @@ enum Screen {
   shortcuts,
 }
 
-class Comment {}
-
 class RouteProvider extends ChangeNotifier {
   Screen _current = Screen.coupons;
+  int _navigationIndex = 0;
 
   Screen get current => _current;
+  int get navigationIndex => _navigationIndex;
 
   set current(Screen screen) {
     _current = screen;
+    notifyListeners();
+  }
+
+  set navigationIndex(int index) {
+    _navigationIndex = index;
     notifyListeners();
   }
 }

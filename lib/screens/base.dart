@@ -1,10 +1,8 @@
-import 'package:allpayments/assets/constants.dart';
 import 'package:allpayments/components/dev_comment.dart';
 import 'package:allpayments/components/dev_comment_input.dart';
 import 'package:allpayments/provider/route_provider.dart';
 import 'package:allpayments/provider/theme_provider.dart';
 import 'package:allpayments/screens/shortcuts.dart';
-import 'package:allpayments/services/firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:allpayments/screens/finance_cards.dart';
@@ -22,8 +20,20 @@ class Base extends StatefulWidget {
   State<Base> createState() => _BaseState();
 }
 
+List<Base> screens = const [
+  HomeScreen(),
+  CouponsScreen(),
+  ShortcutsScreen(),
+  FinanceCardsScreen(),
+];
+
+void navigateToScreenIndex(int index, BuildContext context) {
+  Provider.of<RouteProvider>(context, listen: false).navigationIndex = index;
+  Provider.of<RouteProvider>(context, listen: false).current =
+      screens[index].name;
+}
+
 class _BaseState extends State<Base> {
-  int _selectedIndex = 0;
   bool _inputOpen = false;
 
   @override
@@ -44,7 +54,7 @@ class _BaseState extends State<Base> {
                         Provider.of<RouteProvider>(context, listen: false)
                             .current;
                     return Text(
-                      'all payments app v0.1\ncgi\nmvp prototype\nscreen: ${current.name}',
+                      'all payments app v0.3\ncgi\nmvp prototype\nscreen: ${current.name}',
                       style: TextStyle(
                         fontFamily: GoogleFonts.robotoMono().fontFamily,
                         fontWeight: FontWeight.w400,
@@ -174,19 +184,23 @@ class _BaseState extends State<Base> {
       width: 50,
       child: NavigationRail(
         minWidth: 50,
-        selectedIconTheme: IconThemeData(color: cgiPurple, size: 22),
-        selectedLabelTextStyle: TextStyle(color: cgiPurple),
+        selectedIconTheme:
+            IconThemeData(color: Theme.of(context).primaryColor, size: 22),
+        selectedLabelTextStyle:
+            TextStyle(color: Theme.of(context).primaryColor),
         groupAlignment: 0,
-        selectedIndex: _selectedIndex,
+        selectedIndex:
+            Provider.of<RouteProvider>(context, listen: true).navigationIndex,
         onDestinationSelected: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-          Provider.of<RouteProvider>(context, listen: false).current =
-              screens[index].name;
+          navigateToScreenIndex(index, context);
         },
         labelType: NavigationRailLabelType.selected,
         destinations: <NavigationRailDestination>[
+          verticalNavigationRailDestination(
+            title: 'Home',
+            selectedIcon: Icons.shopping_bag,
+            icon: Icons.shopping_bag_outlined,
+          ),
           verticalNavigationRailDestination(
             title: 'Coupons',
             selectedIcon: Icons.discount,
@@ -201,11 +215,6 @@ class _BaseState extends State<Base> {
             title: 'Cards',
             selectedIcon: Icons.credit_card,
             icon: Icons.credit_card_outlined,
-          ),
-          verticalNavigationRailDestination(
-            title: 'Home',
-            selectedIcon: Icons.shopping_bag,
-            icon: Icons.shopping_bag_outlined,
           ),
         ],
       ),
@@ -234,13 +243,6 @@ class _BaseState extends State<Base> {
     );
   }
 
-  List<Base> screens = const [
-    CouponsScreen(),
-    ShortcutsScreen(),
-    FinanceCardsScreen(),
-    HomeScreen(),
-  ];
-
   Widget buildScreen() {
     return Stack(
       children: [
@@ -249,7 +251,8 @@ class _BaseState extends State<Base> {
               ? const Offset(50, 0)
               : Offset.zero,
           child: IndexedStack(
-            index: _selectedIndex,
+            index: Provider.of<RouteProvider>(context, listen: true)
+                .navigationIndex,
             children: screens,
           ),
         ),

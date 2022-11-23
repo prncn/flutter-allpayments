@@ -9,7 +9,7 @@ Color offBlack = const Color(0xff17181d);
 
 Color cgiRed = const Color(0xffe31837);
 Color cgiPurple = const Color(0xff5236ab);
-Color cgiPurpleSat = const Color(0xff3d00ff);
+Color cgiPurpleSat = const Color(0xff6c46e4);
 
 LinearGradient redGradient = LinearGradient(
   begin: Alignment.bottomLeft,

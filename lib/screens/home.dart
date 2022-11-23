@@ -3,6 +3,7 @@ import 'package:allpayments/components/title_header.dart';
 import 'package:allpayments/provider/route_provider.dart';
 import 'package:allpayments/provider/theme_provider.dart';
 import 'package:allpayments/screens/base.dart';
+import 'package:allpayments/screens/shortcuts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
@@ -72,7 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
               QuickNavigationButton(
                 label: 'Apps',
                 icon: FeatherIcons.box,
-                onPress: () {},
+                onPress: () {
+                  navigateToScreenIndex(2, context);
+                },
               ),
               QuickNavigationButton(
                 label: 'QR Codes',
@@ -87,7 +90,9 @@ class _HomeScreenState extends State<HomeScreen> {
               QuickNavigationButton(
                 label: 'My Cards',
                 icon: Icons.credit_card,
-                onPress: () {},
+                onPress: () {
+                  navigateToScreenIndex(3, context);
+                },
               ),
             ],
           ),
