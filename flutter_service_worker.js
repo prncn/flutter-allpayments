@@ -3,13 +3,12 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "729a2d9f2c3ec4cb56548f04da88c451",
-"assets/FontManifest.json": "ad1a2b33dc8645a9ec31ed1b1f6b573a",
+  "assets/AssetManifest.json": "426a502d0be5a487e1db359a412d87d7",
+"assets/FontManifest.json": "3f0ebc7cf4269ee78431670b41b76ef0",
 "assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
 "assets/images/3d-flame-blue-archive-card-box.png": "4fae215e36941922c2043a56ffb5de59",
 "assets/images/3d-flame-side-view-of-black-money-clip-wallet.png": "70ac77de7f31fb89dcc6f1ccdb4228bf",
-"assets/images/casual-life-3d-girl-with-tablet-receiving-drone-delievery.png": "ee2f1150da1e75adedbdd70e1f61e419",
-"assets/images/mapdata-mock.png": "b92f14141b2ec22909440ae72735b39a",
+"assets/images/barcode.png": "b6480c4a271eeb5415058daf0a06852b",
 "assets/images/market_logos/aldi.png": "08749c7848f7fcae16452b84083804d4",
 "assets/images/market_logos/dm.webp": "17c5509e3445acda1f8f6495839b655f",
 "assets/images/market_logos/edeka.png": "9ee9000fc52e60a76286d8779d22d89b",
@@ -20,10 +19,10 @@ const RESOURCES = {
 "assets/images/market_logos/penny.webp": "0c6c7bf7742ccd0a53537029cc796ef1",
 "assets/images/market_logos/rewe.png": "cb8ae293401792d69707bb9cebc686a4",
 "assets/images/market_logos/rewe.webp": "fb6e13ce753bb7de9241e0d9fedf121d",
+"assets/images/payback-logo.png": "91edb098eeab2f67ab08f93a190f0a04",
 "assets/images/priya-mistry-supermarket-illustration.jpg": "cafac6056f181a2e8cf68b4e3bd32bb6",
-"assets/images/visa-white-shadow.png": "44350dff0de57c2f07a6ed852b6837c1",
-"assets/NOTICES": "255dc1a9001b7d121ca7aa286869d347",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
+"assets/images/visa-logo.png": "44350dff0de57c2f07a6ed852b6837c1",
+"assets/NOTICES": "1ccdfaf42db5d29546c70a34d6397cdc",
 "assets/packages/flutter_feather_icons/fonts/feather.ttf": "c96dc22ca29a082af83cce866d35cebc",
 "canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
 "canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
@@ -35,9 +34,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "7e410f8c793a4de86c9ba5cb52fd422f",
-"/": "7e410f8c793a4de86c9ba5cb52fd422f",
-"main.dart.js": "b03bc968f90b9b75f5f4928380483609",
+"index.html": "59d9bfca54a65315aa590bf080f8694d",
+"/": "59d9bfca54a65315aa590bf080f8694d",
+"main.dart.js": "3f46349f1a1a9b95825232170a275010",
 "manifest.json": "99dfb54cdc6549adb5894745bd4fd7ec",
 "version.json": "4e455da5d32b61b659301f77b3a52450"
 };
